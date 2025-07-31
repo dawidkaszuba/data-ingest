@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pl.dawidkaszuba</groupId>
-	<artifactId>data-ingest</artifactId>
+	<artifactId>mqtt-data-ingest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>data-ingest</name>
-	<description>Application that ingests data from various IoT devices in real time</description>
+	<name>mqtt-data-ingest</name>
+	<description>Application that ingests data from mqtt broker in real time</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -56,9 +56,15 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka-test</artifactId>
-			<scope>test</scope>
+			<artifactId>spring-kafka</artifactId>
+			<version>4.0.0-M3</version>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.paho</groupId>
+			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

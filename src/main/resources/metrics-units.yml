@@ -1,0 +1,9 @@
+metrics:
+  units:
+    battery: "%"
+    humidity: "%"
+    pressure: "hPa"
+    temperature: "°C"
+    voltage: "mV"
+    linkquality: "lqi"
+    power_outage_count: ""
