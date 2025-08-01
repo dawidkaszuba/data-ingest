@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import pl.dawidkaszuba.data_ingest.config.MetricsConfig;
 import pl.dawidkaszuba.data_ingest.service.PayloadNormalizer;
@@ -12,15 +13,19 @@ import pl.dawidkaszuba.data_ingest.service.PayloadNormalizer;
 @Service
 public class JsonPayloadNormalizer implements PayloadNormalizer {
 
-    private static final String SOURCE_PREFIX = "mqtt: ";
+    private static final String SOURCE_PREFIX = "mqtt";
     private static final String VALUE = "value";
 
     private final ObjectMapper objectMapper;
     private final MetricsConfig metricsConfig;
+    private final String mqttAddress;
 
-    public JsonPayloadNormalizer(ObjectMapper objectMapper, MetricsConfig metricsConfig) {
+    public JsonPayloadNormalizer(ObjectMapper objectMapper,
+                                 MetricsConfig metricsConfig,
+                                 @Value("${mqtt.broker-url}") String mqttAddress) {
         this.objectMapper = objectMapper;
         this.metricsConfig = metricsConfig;
+        this.mqttAddress = mqttAddress;
     }
 
     @Override
@@ -30,7 +35,7 @@ public class JsonPayloadNormalizer implements PayloadNormalizer {
 
             ObjectNode normalizedData = objectMapper.createObjectNode();
             normalizedData.put("device", topic.substring(topic.lastIndexOf('/') + 1));
-            normalizedData.put("source", SOURCE_PREFIX + topic);
+            normalizedData.put("source", SOURCE_PREFIX + "@" + mqttAddress);
             normalizedData.put("received", java.time.OffsetDateTime.now().toString());
             normalizedData.put("schemaVersion", "1.0");
 
