@@ -12,15 +12,7 @@ import java.util.Map;
 @PropertySource(value = "classpath:metrics-units.yml", factory = YamlPropertySourceFactory.class)
 public class MetricsConfig {
 
-    private Map<String, String> units = new HashMap<>();
-
-    public Map<String, String> getUnits() {
-        return units;
-    }
-
-    public void setUnits(Map<String, String> units) {
-        this.units = units;
-    }
+    private final Map<String, String> units = new HashMap<>();
 
     public String getUnitForField(String field) {
         return units.getOrDefault(field, "");

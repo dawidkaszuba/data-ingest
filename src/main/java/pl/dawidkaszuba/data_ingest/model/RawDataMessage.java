@@ -1,4 +1,4 @@
-package pl.dawidkaszuba.data_ingest;
+package pl.dawidkaszuba.data_ingest.model;
 
 import java.time.OffsetDateTime;
 

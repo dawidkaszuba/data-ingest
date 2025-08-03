@@ -1,14 +1,11 @@
 package pl.dawidkaszuba.data_ingest.service.impl;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import pl.dawidkaszuba.data_ingest.config.MetricsConfig;
 import pl.dawidkaszuba.data_ingest.service.NotificationService;
 import pl.dawidkaszuba.data_ingest.service.PayloadNormalizer;
 
