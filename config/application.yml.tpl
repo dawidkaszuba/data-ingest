@@ -13,6 +13,8 @@ data-ingest:
       replicas: "1"
 
 mqtt:
+  user: <username>
+  password: <password>
   broker-url: tcp://<host>:1883
   client-id: data-ingest-client
-  topics: sensors/bedroom, zigbee2mqtt/czujnik-sypialnia
+  topics: <topics>
